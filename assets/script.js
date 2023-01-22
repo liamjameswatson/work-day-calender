@@ -22,19 +22,34 @@ $(workArray).each(function (index) {
 });
 
 // for each row
-$(".row").each(function (index) {
-  // if the current hour === text
-  if (currentHour === $(this).text()) {
-    // store the hourIndex = currentHour[index]
-    var hourIndex = [index][0];
-    console.log(hourIndex);
-    // change colour to red
-    $(this).css("background-color", "red");
-    console.log(hourIndex);
+
+$("textarea").each(function (index) {
+  if ($(".hour")[index].textContent === currentHour) {
+    $(this).addClass("present");
+    // $("textarea").addClass("present");
+    console.log(
+      $(".hour")[index].textContent + " and the time is..." + currentHour
+    );
+  } else if ($(".hour")[index].textContent < currentHour) {
+    $(this).addClass("past");
+    // $(".row").addClass("past");
   } else {
-    console.log($(".row")[index]);
-    if (hourIndex < $(this).index) {
-      console.log("greater");
-    }
+    $(this).addClass("future");
   }
 });
+
+// $(".hour").each(function (index) {
+//   if ($(".hour")[index].textContent === currentHour) {
+//     $(this).css("background-color", "yellow");
+//     console.log(
+//       $(".hour")[index].textContent + " and the time is..." + currentHour
+//     );
+//     console.log("help");
+//   } else if ($(".hour")[index].textContent < currentHour) {
+//     $(this).css("background-color", "red");
+//     console.log("lower");
+//   } else {
+//     console.log("higher");
+//     $(this).css("background-color", "green");
+//   }
+// });
