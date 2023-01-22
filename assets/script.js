@@ -3,7 +3,7 @@ var today = moment();
 $("#currentDay").text(today.format("dddd, Do MMMM"));
 var currentHour = today.format("ha");
 workArray = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-currentHour = "12pm";
+currentHour = "1pm";
 // For each hour create a div, with a class of the hour and text of the hour
 $(workArray).each(function (index) {
   // create a div = add classes row timeblock and the hour - append to container
@@ -21,35 +21,20 @@ $(workArray).each(function (index) {
   );
 });
 
-// for each row
-
+// for each row - compare each hour to the current hour and add past, present or future classes.
 $("textarea").each(function (index) {
-  if ($(".hour")[index].textContent === currentHour) {
+  // change 9am to 09am for string comparison
+  $(".hour")[0].textContent = "09am";
+  // hour = text in the hour class
+  var hour = $(".hour")[index].textContent;
+  if (hour === currentHour) {
     $(this).addClass("present");
-    // $("textarea").addClass("present");
-    console.log(
-      $(".hour")[index].textContent + " and the time is..." + currentHour
-    );
   } else if ($(".hour")[index].textContent < currentHour) {
     $(this).addClass("past");
-    // $(".row").addClass("past");
   } else {
     $(this).addClass("future");
   }
+  console.log($(".hour")[index].textContent);
+  // change back to 9am
+  $(".hour")[0].textContent = "9am";
 });
-
-// $(".hour").each(function (index) {
-//   if ($(".hour")[index].textContent === currentHour) {
-//     $(this).css("background-color", "yellow");
-//     console.log(
-//       $(".hour")[index].textContent + " and the time is..." + currentHour
-//     );
-//     console.log("help");
-//   } else if ($(".hour")[index].textContent < currentHour) {
-//     $(this).css("background-color", "red");
-//     console.log("lower");
-//   } else {
-//     console.log("higher");
-//     $(this).css("background-color", "green");
-//   }
-// });
