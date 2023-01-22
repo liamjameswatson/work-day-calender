@@ -2,6 +2,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
+  display: inline;
 }
 
 textarea {
@@ -68,4 +69,27 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.ONE {
+  background-color: blue;
+}
+
+.TWO {
+  background-color: red;
+}
+
+.THREE {
+  background-color: green;
+}
+.one {
+  background-color: blue;
+}
+
+.two {
+  background-color: red;
+}
+
+.three {
+  background-color: green;
 }
