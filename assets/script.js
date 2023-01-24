@@ -2,8 +2,8 @@
 var today = moment();
 $("#currentDay").text(today.format("dddd, Do MMMM"));
 var currentHour = today.format("ha");
+
 workArray = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-currentHour = "1pm";
 // For each hour create a div, with a class of the hour and text of the hour
 $(workArray).each(function (index) {
   // create a div = add classes row timeblock and the hour - append to container
@@ -16,14 +16,15 @@ $(workArray).each(function (index) {
       .append(
         "<div class='col-2 hour'>" +
           workArray[index] +
-          "</div><textarea class='col-8'></textarea><button class='col-2 saveBtn'></button>"
+          "</div><textarea class='col-8 description'></textarea><button class='col-2 saveBtn'></button>"
       )
   );
 });
 
 // for each row - compare each hour to the current hour and add past, present or future classes.
-$("textarea").each(function (index) {
+$(".row").each(function (index) {
   // change 9am to 09am for string comparison
+  // console.log($(".hour")[0]);
   $(".hour")[0].textContent = "09am";
   // hour = text in the hour class
   var hour = $(".hour")[index].textContent;
@@ -34,7 +35,34 @@ $("textarea").each(function (index) {
   } else {
     $(this).addClass("future");
   }
-  console.log($(".hour")[index].textContent);
+  // console.log($(".hour")[index].textContent);
   // change back to 9am
   $(".hour")[0].textContent = "9am";
+});
+
+// Save textarea and time to local storage
+$(".saveBtn").on("click", function (event) {
+  // Get text from text area
+  var textToSave = $(event.target).prev().val();
+  // get time
+  var hourToSave = $(this).siblings(".hour").text();
+  console.log(textToSave + " @ " + hourToSave);
+  // save to local storage
+  localStorage.setItem(textToSave, hourToSave);
+});
+
+for (var i = 0; i < localStorage.length; i++) {
+  var textToDisplay = localStorage.key(i);
+  var hourToDisplay = localStorage.getItem(textToDisplay);
+}
+
+$(".hour").each(function (index) {
+  for (var i = 0; i < localStorage.length; i++) {
+    var textToDisplay = localStorage.key(i);
+    var hourToDisplay = localStorage.getItem(textToDisplay);
+
+    if ($(this).text() === hourToDisplay) {
+      $(this).siblings(".description").val(textToDisplay);
+    }
+  }
 });
