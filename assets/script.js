@@ -39,22 +39,32 @@ $(".row").each(function (index) {
   // change back to 9am
   $(".hour")[0].textContent = "9am";
 });
-
 // Save textarea and time to local storage
 $(".saveBtn").on("click", function (event) {
+  
+  // TODO - clear local storage woks here. localstorage.clear()
+  //  TODO- remove item from local storage localstorage.remove()
+  // Get the local storage
+  for (var i = 0; i < localStorage.length; i++) {
+    // logging local storage[i]
+    console.log(Object.values(localStorage)[i]);
+    // logging hour
+    console.log($(this).siblings(".hour").text());
+    // if they're the same
+    if (Object.values(localStorage)[i] === $(this).siblings(".hour").text()) {
+      // remove item
+      localStorage.removeItem([i]);
+    }
+  }
+  console.log(localStorage);
   // Get text from text area
   var textToSave = $(event.target).prev().val();
   // get time
   var hourToSave = $(this).siblings(".hour").text();
-  console.log(textToSave + " @ " + hourToSave);
+
   // save to local storage
   localStorage.setItem(textToSave, hourToSave);
 });
-
-for (var i = 0; i < localStorage.length; i++) {
-  var textToDisplay = localStorage.key(i);
-  var hourToDisplay = localStorage.getItem(textToDisplay);
-}
 
 $(".hour").each(function (index) {
   for (var i = 0; i < localStorage.length; i++) {
@@ -66,3 +76,5 @@ $(".hour").each(function (index) {
     }
   }
 });
+
+textToCheck = $(this).siblings(".hour").text();
