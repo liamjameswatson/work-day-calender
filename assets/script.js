@@ -24,6 +24,9 @@ $(workArray).each(function (index) {
   );
 });
 
+// ADD THE FONT AWESOME FLOPPY DISK TO THE THE BUTTON ELEMENTS
+$(".saveBtn").html(`<i class="fa-solid fa-floppy-disk fa-1x"></i>`);
+
 // DISPLAY COLOUR ROWS  PAST/PRESENT/FUTURE
 // for each row - compare each hour to the current hour and add past, present or future classes.
 $(".row").each(function (index) {
@@ -46,7 +49,7 @@ $(".row").each(function (index) {
 // Save textarea and time to local storage
 $(".saveBtn").on("click", function (event) {
   // Get text from text area
-  var textToSave = $(event.target).prev().val();
+  var textToSave = $(this).siblings(".description").val();
   // get time
   var hourToSave = $(this).siblings(".hour").text();
   // save to local storage
