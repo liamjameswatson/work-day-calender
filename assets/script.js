@@ -41,8 +41,6 @@ $(".row").each(function (index) {
 });
 // Save textarea and time to local storage
 $(".saveBtn").on("click", function (event) {
-  // TODO - clear local storage woks here. localstorage.clear()
-  //  TODO- remove item from local storage localstorage.remove()
   // Get the local storage
   for (var i = 0; i < localStorage.length; i++) {
     // logging local storage[i]
@@ -60,7 +58,7 @@ $(".saveBtn").on("click", function (event) {
   var textToSave = $(event.target).prev().val();
   // get time
   var hourToSave = $(this).siblings(".hour").text();
-  
+
   // save to local storage
   localStorage.setItem(hourToSave, textToSave);
 });
@@ -69,7 +67,7 @@ $(".hour").each(function (index) {
   for (var i = 0; i < localStorage.length; i++) {
     var textToDisplay = localStorage.key(i);
     var hourToDisplay = localStorage.getItem(textToDisplay);
-    
+
     if ($(this).text() === hourToDisplay) {
       $(this).siblings(".description").val(textToDisplay);
     }
@@ -77,13 +75,14 @@ $(".hour").each(function (index) {
 });
 
 textToCheck = $(this).siblings(".hour").text();
+console.log($(".time-block9am>textarea"));
 
-$(".time-block9am>textarea").val(localStorage.getItem('9am'));
-$(".time-block10am>textarea").val(localStorage.getItem('10am'));
-$(".time-block11am>textarea").val(localStorage.getItem('11am'));
-$(".time-block12pm>textarea").val(localStorage.getItem('12pm'));
-$(".time-block1pm>textarea").val(localStorage.getItem('1pm'));
-$(".time-block2pm>textarea").val(localStorage.getItem('2pm'));
-$(".time-block3pm>textarea").val(localStorage.getItem('3pm'));
-$(".time-block4pm>textarea").val(localStorage.getItem('4pm'));
-$(".time-block5pm>textarea").val(localStorage.getItem('5pm'));
+$(".time-block9am>textarea").val(localStorage.getItem("9am"));
+$(".time-block10am>textarea").val(localStorage.getItem("10am"));
+$(".time-block11am>textarea").val(localStorage.getItem("11am"));
+$(".time-block12pm>textarea").val(localStorage.getItem("12pm"));
+$(".time-block1pm>textarea").val(localStorage.getItem("1pm"));
+$(".time-block2pm>textarea").val(localStorage.getItem("2pm"));
+$(".time-block3pm>textarea").val(localStorage.getItem("3pm"));
+$(".time-block4pm>textarea").val(localStorage.getItem("4pm"));
+$(".time-block5pm>textarea").val(localStorage.getItem("5pm"));
