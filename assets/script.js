@@ -64,6 +64,6 @@ $(".hour").each(function () {
   // If the time block class is the hour, eg. 9am
   $(".time-block" + savedHour + ">").val(
     // get that key/item from localStorage. eg. the 9am key/item
-    localStorage.getItem("" + savedHour + "")
+    localStorage.getItem(savedHour)
   );
 });
