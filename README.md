@@ -4,7 +4,7 @@ Organise your day
 
 ## Description
 
-In this project, I have designed a planner for each hour of the working day. Built with the Jquery libary, the website allows a user to enter and save information, that they have planned during the working day.
+This repository contains a daily planner, where a user can input tasks/events to complete throughout the day. They can enter their TODOs for each hour, at the start of the day and save it in place. As the red colour block appears on the task, that is when it is due to be done. When the task is complete, delete the task. It will update everyday and keep track of the present time as well as future events.  
 
 The website the following features:
 
@@ -21,7 +21,7 @@ To use the daily planner, enter your daily to do tasks, and click the blue save 
 
 ## Screenshot
 
-![Screenshot](./assets/images/05-third-party-apis-homework-demo.gif)
+![Screenshot](./assets/images/screenshot.png)
 
 ## The website
 
